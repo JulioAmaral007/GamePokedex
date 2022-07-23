@@ -1,4 +1,5 @@
 var quantidade = document.getElementById('quantidade');
+
 quantidade.addEventListener('keyup',()=>{
    pegaPokemons(quantidade.value);
 })
@@ -34,20 +35,11 @@ function pegaPokemons(quantidade){
        <p>`+val.nome+`</p>
    </div>          
                    `;
-   
                    })
-
-
-
-
                }
-
            })
-
-
-
        })
 
-   
    })
 }
+
