@@ -1,5 +1,5 @@
 <h1 align="center">
-  Sign-Up
+  Pokedex
 </h1>
 
 <p align="center">
