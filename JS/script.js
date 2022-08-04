@@ -9,6 +9,12 @@ const buttonNext = document.querySelector('.btn-next');
 
 let searchPokemon = 1;
 
+/**
+ * It takes a pokemon name as an argument, fetches the pokemon's data from the PokeAPI, and returns the
+ * data if the request was successful.
+ * @param pokemon - The name of the pokemon you want to fetch.
+ * @returns The data object.
+ */
 const fetchPokemon = async (pokemon) => {
   const APIResponse = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemon}`);
 
@@ -18,6 +24,11 @@ const fetchPokemon = async (pokemon) => {
   }
 }
 
+/**
+ * It takes a pokemon name as an argument, fetches the pokemon data from the pokeapi, and then renders
+ * the pokemon's name, number, and image to the DOM.
+ * @param pokemon - the name of the pokemon
+ */
 const renderPokemon = async (pokemon) => {
 
   pokemonName.innerHTML = 'Loading...';
@@ -39,11 +50,15 @@ const renderPokemon = async (pokemon) => {
   }
 }
 
+/* Preventing the default action of the form from happening. */
 form.addEventListener('submit', (event) => {
   event.preventDefault();
   renderPokemon(input.value.toLowerCase());
 });
 
+/* Listening for a click event on the buttonPrev element. If the searchPokemon variable is greater than
+1, it will subtract 1 from the searchPokemon variable and then call the renderPokemon function with
+the new value of searchPokemon. */
 buttonPrev.addEventListener('click', () => {
   if (searchPokemon > 1) {
     searchPokemon -= 1;
@@ -51,9 +66,13 @@ buttonPrev.addEventListener('click', () => {
   }
 });
 
+/* Listening for a click event on the buttonNext element. If the searchPokemon variable is greater than
+1, it will subtract 1 from the searchPokemon variable and then call the renderPokemon function with
+the new value of searchPokemon. */
 buttonNext.addEventListener('click', () => {
   searchPokemon += 1;
   renderPokemon(searchPokemon);
 });
 
+/* Calling the renderPokemon function with the value of the searchPokemon variable. */
 renderPokemon(searchPokemon);
